@@ -20,7 +20,7 @@
                 <th>Klientas</th>
                 <th>Paskutinis užsakymas</th>
                 <th>Vilkiko nr.</th>
-                <th> <button type="button" class="text-primary bg-transparent border-0" data-bs-toggle="modal" data-bs-target="#MyModal" value="Add"> <i class="fa fa-plus fa-lg" aria-hidden="true"></i> </button> </th>
+                <th> <button type="button" class="text-primary bg-transparent border-0" data-bs-toggle="modal" data-bs-target="#MyModal" @click="openModal" value="Add"> <i class="fa fa-plus fa-lg" aria-hidden="true"></i> </button> </th>
             </tr>
             <tr v-for="row in allData">
                 <td>{{ row.orderNumber }}</td>
@@ -36,38 +36,30 @@
         </table>
       </div>
 
-      <div class="modal fade" id="MyModal" tabindex="-1">
+      <div v-if="MyModal" class="modal fade" id="MyModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Pridėti užsakymą</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h4 class="modal-title">{{ dynamicTitle }}</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="MyModal=false"></button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="id">Užsakymo numeris</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
                         <label for="date">Data</label>
-                        <input type="text" class="form-control">
+                        <input type="date" v-model="date" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="client">Klientas</label>
-                        <input type="text" class="form-control">
+                        <input type="text" v-model="client" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="lastOrder">Paskutinis užsakymas</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="truckId">Vilkiko nr.</label>
-                        <input type="text" class="form-control">
+                        <label for="license_plate">Vilkiko nr.</label>
+                        <input type="text" v-model="license_plate" class="form-control">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden">
-                    <input type="button" class="btn btn-success">
+                    <input type="hidden" v-model="hiddenId">
+                    <input type="button" v-model="actionButton" @click="submitData" class="btn btn-success">
                 </div>
             </div>
 
