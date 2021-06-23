@@ -29,8 +29,8 @@
                 <td>paskutinis užsakymas1</td>
                 <td>{{ row.truckLicensePlate }}</td>
                 <td>
-                    <button type="button" name="edit" class="text-secondary bg-transparent border-0" data-bs-toggle="modal" data-bs-target="#MyModal"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i> </button>
-                    <button type="button" name="delete" class="text-secondary bg-transparent border-0" data-bs-toggle="modal" data-bs-target="#MyModal"> <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> </button>
+                    <button type="button" name="edit" class="text-secondary bg-transparent border-0" data-bs-toggle="modal" @click="fetchData(row.id)" data-bs-target="#MyModal"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i> </button>
+                    <button type="button" name="delete" class="text-secondary bg-transparent border-0" data-bs-toggle="modal" @click="deleteData(row.id)" data-bs-target="#MyModal"> <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> </button>
                 </td>
             </tr>
         </table>
