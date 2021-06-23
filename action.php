@@ -16,13 +16,19 @@ if($recieved_data->action == "fetchall") {
 }
 
 if($recieved_data->action == "insert") {
+
+    $orderNumberQuery = "SELECT orderNumber FROM orders ORDER BY orderNumber DESC LIMIT 1";
+    
+    foreach ($connect->query($orderNumberQuery) as $row){
+        $newOrderNumber = "U" .str_pad(substr($row['orderNumber'], -6) + 1, 6, "0", STR_PAD_LEFT);
+    }
     
     $data = array(
+
         ':date' => $recieved_data->date,
         ':client' => $recieved_data->client,
         ':license_plate' => $recieved_data->licensePlate,
-        ':order_number' => "U".str_pad(1, 6, "0", STR_PAD_LEFT)."",
-        
+        ':order_number' => $newOrderNumber,
     );
 
     $query = "INSERT INTO orders(date, client, truckLicensePlate, orderNumber) VALUES(:date, :client, :license_plate, :order_number)";
