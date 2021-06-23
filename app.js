@@ -2,6 +2,7 @@ let app = new Vue({
     el: '#crudApp',
     data: {
         allData: '',
+        latest: '',
         MyModal: false,
         hiddenId: null,
         actionButton: 'Insert',
@@ -14,6 +15,20 @@ let app = new Vue({
             }).then(res => {
                 app.allData = res.data;
             })
+        },
+        lastOrder(client) {
+
+            axios.post('action.php', {
+                action: 'getlastorder',
+                client: client
+            }).then(res => {
+                app.latest = res.data.orderNumber;
+
+                console.log(app.latest);
+            })
+
+            return;
+
         },
         openModal() {
             app.date = '';

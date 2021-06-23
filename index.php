@@ -26,7 +26,7 @@
                 <td>{{ row.orderNumber }}</td>
                 <td>{{ row.date }}</td>
                 <td>{{ row.client }}</td>
-                <td>paskutinis užsakymas1</td>
+                <td>{{ lastOrder(row.client) }}</td>
                 <td>{{ row.truckLicensePlate }}</td>
                 <td>
                     <button type="button" name="edit" class="text-secondary bg-transparent border-0" data-bs-toggle="modal" @click="fetchData(row.id)" data-bs-target="#MyModal"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i> </button>

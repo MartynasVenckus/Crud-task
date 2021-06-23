@@ -6,10 +6,19 @@ $data = array();
 
 if($recieved_data->action == "fetchall") {
     $query = "SELECT * FROM orders";
-    $statement = $connect->prepare($query);
-    $statement->execute();
-    while($row = $statement->fetch(PDO::FETCH_ASSOC)){
+    
+    foreach ($connect->query($query) as $row){
         $data[] = $row;
+    }
+    
+    echo json_encode($data);
+}
+
+if($recieved_data->action == "getlastorder") {
+    $query = "SELECT orderNumber FROM `orders` WHERE client = '".$recieved_data->client."' ORDER BY date DESC LIMIT 1";
+    
+    foreach ($connect->query($query) as $row){
+        $data['orderNumber'] = $row['orderNumber'];
     }
     
     echo json_encode($data);
@@ -24,7 +33,6 @@ if($recieved_data->action == "insert") {
     }
     
     $data = array(
-
         ':date' => $recieved_data->date,
         ':client' => $recieved_data->client,
         ':license_plate' => $recieved_data->licensePlate,
