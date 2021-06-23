@@ -22,12 +22,12 @@
                 <th>Vilkiko nr.</th>
                 <th> <button type="button" class="text-primary bg-transparent border-0" data-bs-toggle="modal" data-bs-target="#MyModal" value="Add"> <i class="fa fa-plus fa-lg" aria-hidden="true"></i> </button> </th>
             </tr>
-            <tr>
-                <td>numeris1</td>
-                <td>data1</td>
-                <td>klientas1</td>
+            <tr v-for="row in allData">
+                <td>{{ row.orderNumber }}</td>
+                <td>{{ row.date }}</td>
+                <td>{{ row.client }}</td>
                 <td>paskutinis užsakymas1</td>
-                <td>vilkiko numeris1</td>
+                <td>{{ row.truckLicensePlate }}</td>
                 <td>
                     <button type="button" name="edit" class="text-secondary bg-transparent border-0" data-bs-toggle="modal" data-bs-target="#MyModal"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i> </button>
                     <button type="button" name="delete" class="text-secondary bg-transparent border-0" data-bs-toggle="modal" data-bs-target="#MyModal"> <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> </button>
