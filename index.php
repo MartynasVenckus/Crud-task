@@ -33,6 +33,10 @@
                     <button type="button" name="delete" class="text-secondary bg-transparent border-0" data-bs-toggle="modal" @click="deleteData(row.id)" data-bs-target="#MyModal"> <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> </button>
                 </td>
             </tr>
+            <tr>
+                <td>{{ row }}</td>
+                
+            </tr>
         </table>
       </div>
 
@@ -62,13 +66,8 @@
                     <input type="button" v-model="actionButton" @click="submitData" class="btn btn-success">
                 </div>
             </div>
-
         </div>
-      
       </div>
-
-        
-
 
     </div>
 

@@ -15,7 +15,7 @@ if($recieved_data->action == "fetchall") {
 }
 
 if($recieved_data->action == "getlastorder") {
-    $query = "SELECT orderNumber FROM `orders` WHERE client = '".$recieved_data->client."' ORDER BY date DESC LIMIT 1";
+    $query = "SELECT orderNumber FROM orders WHERE client = '".$recieved_data->client."' ORDER BY date DESC LIMIT 1";
     
     foreach ($connect->query($query) as $row){
         $data['orderNumber'] = $row['orderNumber'];

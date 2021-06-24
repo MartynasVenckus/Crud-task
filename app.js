@@ -26,9 +26,6 @@ let app = new Vue({
 
                 console.log(app.latest);
             })
-
-            return;
-
         },
         openModal() {
             app.date = '';
